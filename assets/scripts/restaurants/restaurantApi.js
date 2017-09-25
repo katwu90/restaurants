@@ -13,6 +13,13 @@ const createRestaurant = function (data) {
   })
 }
 
+const indexRestaurant = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/restaurants',
+    method: 'GET'
+  })
+}
+
 // const signIn = function (data) {
 //   return $.ajax({
 //     url: config.apiOrigin + '/sign-in',
@@ -43,5 +50,6 @@ const createRestaurant = function (data) {
 // }
 //
 module.exports = {
-  createRestaurant
+  createRestaurant,
+  indexRestaurant
 }

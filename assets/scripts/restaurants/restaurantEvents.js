@@ -10,7 +10,17 @@ const onCreateNewRestaurant = function (event) {
     .then(restaurantUi.createRestaurantSuccess)
     .catch(restaurantUi.createRestaurantFailure)
 }
-//
+
+const onIndexRestaurant = function (event) {
+  event.preventDefault()
+  $('.restaurant-divs').hide()
+  $('.auth-message').hide()
+  $('.restaurant-message').hide()
+  restaurantApi.indexRestaurant()
+    .then(restaurantUi.indexRestaurantSuccess)
+    .catch(restaurantUi.indexRestaurantFailure)
+}
+
 // const onSignIn = function (event) {
 //   const data = getFormFields(this)
 //   event.preventDefault()
@@ -35,5 +45,6 @@ const onCreateNewRestaurant = function (event) {
 // }
 //
 module.exports = {
-  onCreateNewRestaurant
+  onCreateNewRestaurant,
+  onIndexRestaurant
 }
