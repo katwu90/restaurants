@@ -3,6 +3,7 @@
 const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
 const authEvents = require('./auth/authEvents')
+const restaurantEvents = require('./restaurants/restaurantEvents')
 
 $(() => {
   setAPIOrigin(location, config)
@@ -19,6 +20,7 @@ $(() => {
   $('.signout-link').hide()
   $('.managepassword-link').hide()
   $('.auth').hide()
+  // user authentication eventlisteners, hide and show divs
   $('.signup-link').on('click', () => {
     $('.auth').hide()
     $('.sign-up-nav').show('slow')
@@ -34,4 +36,12 @@ $(() => {
   $('.managepassword-link').on('click', () => {
     $('.change-password-nav').show('slow')
   })
+  // restaurant eventlisteners, hide and show divs
+  $('.restaurant-divs').hide()
+  $('.create-fave-link').on('click', () => {
+    $('.restaurant-divs').hide()
+    $('.auth-message').hide()
+    $('.create-fave').show('slow')
+  })
+  $('#create-fave').on('submit', restaurantEvents.onCreateNewRestaurant)
 })
