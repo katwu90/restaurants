@@ -21,29 +21,6 @@ const onIndexRestaurant = function (event) {
     .catch(restaurantUi.indexRestaurantFailure)
 }
 
-// const onSignIn = function (event) {
-//   const data = getFormFields(this)
-//   event.preventDefault()
-//   authApi.signIn(data)
-//     .then(authUi.signInSuccess)
-//     .catch(authUi.signInFailure)
-// }
-//
-// const onChangePassword = function (event) {
-//   const data = getFormFields(this)
-//   event.preventDefault()
-//   authApi.changePassword(data)
-//     .then(authUi.changePasswordSuccess)
-//     .catch(authUi.changePasswordFailure)
-// }
-//
-// const onSignOut = function (event) {
-//   event.preventDefault()
-//   authApi.signOut()
-//     .then(authUi.signOutSuccess)
-//     .catch(authUi.signOutFailure)
-// }
-//
 module.exports = {
   onCreateNewRestaurant,
   onIndexRestaurant

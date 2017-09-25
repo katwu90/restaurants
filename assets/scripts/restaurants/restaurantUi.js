@@ -1,6 +1,6 @@
 'use strict'
 // const store = require('../store')
-// const showRestaurants = require('./restaurant-listing.handlebars')
+const showRestaurants = require('./restaurant-listing.handlebars')
 
 const hideRestaurantDivs = () => $('.restaurant-divs').hide()
 const restaurantMessage = (text) => $('.restaurant-message').text(text).show()
@@ -18,16 +18,19 @@ const createRestaurantFailure = function () {
 
 const indexRestaurantSuccess = function (data) {
   console.log(data)
-  // hideRestaurantDivs()
+  hideRestaurantDivs()
   restaurantMessage('Here are all your favorite restaurants')
-  // const showRestaurantsHTML = showRestaurants()
+  const showRestaurantsHTML = showRestaurants({restaurants: data.restaurants})
+  $('.restaurant-content').append(showRestaurantsHTML)
+  $(() => $('.delete').on('click', confirmDelete))
 }
 
 const indexRestaurantFailure = function (data) {
   hideRestaurantDivs()
   restaurantMessage('Error on getting all your favorite restaurants!')
-  // const showRestaurantsHTML = showRestaurants()
 }
+
+const confirmDelete = function () {}
 
 module.exports = {
   createRestaurantSuccess,
