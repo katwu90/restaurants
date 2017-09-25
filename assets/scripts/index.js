@@ -38,10 +38,14 @@ $(() => {
   })
   // restaurant eventlisteners, hide and show divs
   $('.restaurant-divs').hide()
+  // create new restaurant
   $('.create-fave-link').on('click', () => {
     $('.restaurant-divs').hide()
     $('.auth-message').hide()
+    $('.restaurant-message').hide()
     $('.create-fave').show('slow')
   })
   $('#create-fave').on('submit', restaurantEvents.onCreateNewRestaurant)
+  // index all restaurants
+  $('.index-fave-link').on('click', restaurantEvents.onIndexRestaurant)
 })
