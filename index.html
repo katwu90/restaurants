@@ -14,11 +14,11 @@
     <body class="container-fluid">
   <nav class="navbar fixed-top">
     <ul class="nav navbar-nav">
-      <li class="restaurant-crude"><a>Add New Fave</a></li>
-      <li class="restaurant-crude"><a>Edit A Fave</a></li>
-      <li class="restaurant-crude"><a>Find A Fave</a></li>
-      <li class="restaurant-crude"><a>View All Faves</a></li>
-      <li class="restaurant-crude"><a>Delete A Fave</a></li>
+      <li class="create-fave-link restaurant-crude"><a>Add New Fave</a></li>
+      <li class="update-fave-link restaurant-crude"><a>Edit A Fave</a></li>
+      <li class="show-fave-link restaurant-crude"><a>Find A Fave</a></li>
+      <li class="index-fave-link restaurant-crude"><a>View All Faves</a></li>
+      <li class="delete-fave-link restaurant-crude"><a>Delete A Fave</a></li>
       <li class="signup-link"><a>Create Account</a></li>
       <li class="signin-link"><a>Sign In</a></li>
       <li class="managepassword-link"><a>Manage Password</a></li>
@@ -55,45 +55,36 @@
 <p class="auth-message"></p>
 </div>
       <h1>Fave Restaurants</h1>
+  <div class="restaurant-text">
+  <p class="restaurant-message"></p>
+  </div>
 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.</p>
+  <div class="restaurant-divs create-fave">
+    <form id="create-fave">
+      <input name="restaurant[name]" type="text" placeholder="Restaurant Name">
+      <input name="restaurant[rating]" type="text" placeholder="Rating">
+      <input name="restaurant[neighborhood]" type="text" placeholder="Neighborhood">
+      <button type="submit" class="btn btn-default">Add New Fave Restaurant</button>
+    </form>
+    </div>
 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.</p>
+    <div class="restaurant-divs show-fave">
+      <form id="show-fave">
+        <input name="restaurant[name]" type="text" placeholder="Restaurant Name">
+        <input name="restaurant[rating]" type="text" placeholder="Rating">
+        <input name="restaurant[neighborhood]" type="text" placeholder="Neighborhood">
+        <button type="submit" class="btn btn-default">Show This Restaurant</button>
+      </form>
+      </div>
 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.</p>
+    <div class="restaurant-divs update-fave">
+      <form id="update-fave">
+        <input name="restaurant[name]" type="text" placeholder="Restaurant Name">
+        <input name="restaurant[rating]" type="text" placeholder="Rating">
+        <input name="restaurant[neighborhood]" type="text" placeholder="Neighborhood">
+        <button type="submit" class="btn btn-default">Update Fave Restaurant</button>
+      </form>
+      </div>
 
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.</p>
-
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-      minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-      ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-      velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id
-      est laborum.</p>
     </body>
 </html>
