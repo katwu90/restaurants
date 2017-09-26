@@ -5,11 +5,14 @@
 
 body {
   margin: 0 auto;
-  text-align: center;
 }
 
-li a {
+a {
   color: #fff;
+}
+
+h1 {
+  text-align: center;
 }
 
 li a:hover {
@@ -22,4 +25,8 @@ li a:hover {
 
 p {
   text-align: left;
+}
+
+ul {
+  list-style-type: none;
 }
