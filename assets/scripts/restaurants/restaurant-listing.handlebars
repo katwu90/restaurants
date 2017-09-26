@@ -1,5 +1,4 @@
 {{#each restaurants as |restaurant|}}
- <!-- Developers, why are we using data-id and not just id? -->
   <ul data-id="{{restaurant.id}}">
   <li>Name: {{restaurant.name}}</li>
   <li>
@@ -16,8 +15,6 @@
       Neighborhood: N/A
     {{/if}}
   </li>
-  <li><button class="delete btn btn-default">Delete</button>
-  </li>
+  <li><p class="confirm-delete"><button class="confirmation btn btn-default">Delete</button></p></li>
   </ul>
-
 {{/each}}
