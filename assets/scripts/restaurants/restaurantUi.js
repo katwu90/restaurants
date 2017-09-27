@@ -1,7 +1,9 @@
 'use strict'
-// const store = require('../store')
+const store = require('../store')
 const restaurantApi = require('./restaurantApi')
+// const restaurantEvents = require('./restaurantEvents')
 const showRestaurants = require('./restaurant-listing.handlebars')
+const getFormFields = require('../../../lib/get-form-fields')
 
 const hideRestaurantDivs = () => $('.restaurant-divs').hide()
 const restaurantMessage = (text) => $('.restaurant-message').text(text).show()
@@ -18,7 +20,6 @@ const createRestaurantFailure = function () {
 }
 
 const deleteDiv = `Are you sure you want to delete?<button type="submit" class="no-delete btn btn-default">No</button><button type="submit" class="yes-delete btn btn-default">Yes</button>`
-let currentId = null
 
 const noDelete = function (event) {
   event.preventDefault()
@@ -27,21 +28,19 @@ const noDelete = function (event) {
 }
 
 const deleteRestaurantSuccess = function () {
-  console.log('Successfully deleted!')
-  let id = `[data-id="${currentId}"]`
-  console.log(id)
+  restaurantMessage('Successfully deleted!')
+  const id = `[data-id="${store.currentId}"]`
   $(id).hide()
 }
 
-const deleteRestaurantFailure = function (err) {
-  console.log(err)
+const deleteRestaurantFailure = function () {
+  restaurantMessage('Failed to delete')
 }
 
 const onYesDelete = function (event) {
   event.preventDefault()
-  currentId = $(this).parent().parent().parent().attr('data-id')
-  console.log(currentId)
-  restaurantApi.deleteRestaurant(currentId)
+  store.currentId = $(this).parent().parent().parent().attr('data-id')
+  restaurantApi.deleteRestaurant(store.currentId)
     .then(deleteRestaurantSuccess)
     .catch(deleteRestaurantFailure)
 }
@@ -54,12 +53,54 @@ const confirmDelete = function (event) {
   $('.yes-delete').on('click', onYesDelete)
 }
 
+const updateFormInputs = `<input name="restaurant[name]" type="text" placeholder="Restaurant Name">
+<input name="restaurant[rating]" type="text" placeholder="Rating">
+<input name="restaurant[neighborhood]" type="text" placeholder="Neighborhood">
+<button type="submit" class="update-button btn btn-default">Update This Restaurant</button>`
+
+const updateRestaurantSuccess = function () {
+  restaurantMessage('Successfully updated restaurant!')
+
+}
+
+const updateRestaurantFailure = function () {
+  restaurantMessage('Error updating restaurant! Please try again.')
+}
+
+const onUpdateRestaurant = function (event) {
+  event.preventDefault()
+  store.currentId = $(this).parent().parent().attr('data-id')
+  console.log(store.currentId)
+  const data = getFormFields(this)
+  console.log(data)
+  if (data.restaurant.name === '') {
+    data.restaurant.name = $(this).parent().siblings('.name').children().text()
+  }
+  if (data.restaurant.rating === '') {
+    data.restaurant.rating = $(this).parent().siblings('.rating').children().text()
+  }
+  if (data.restaurant.neighborhood === '') {
+    data.restaurant.neighborhood = $(this).parent().siblings('.neighborhood').children().text()
+  }
+  restaurantApi.updateRestaurant(data)
+    .then(updateRestaurantSuccess)
+    .catch(updateRestaurantFailure)
+}
+
+const getUpdateForm = function (event) {
+  event.preventDefault()
+  $(this).siblings('.update-form').html(updateFormInputs)
+  $(this).hide()
+  $('.update-form').on('submit', onUpdateRestaurant)
+}
+
 const indexRestaurantSuccess = function (data) {
   hideRestaurantDivs()
   restaurantMessage('Here are all your favorite restaurants')
   const showRestaurantsHTML = showRestaurants({restaurants: data.restaurants})
   $('.restaurant-content').append(showRestaurantsHTML).show()
   $(() => $('.confirmation').on('click', confirmDelete))
+  $(() => $('.update').on('click', getUpdateForm))
 }
 
 const indexRestaurantFailure = function (data) {
