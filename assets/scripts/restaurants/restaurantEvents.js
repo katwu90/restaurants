@@ -13,6 +13,7 @@ const onCreateNewRestaurant = function (event) {
 
 const onIndexRestaurant = function (event) {
   event.preventDefault()
+  $('.restaurant-content').empty()
   $('.restaurant-divs').hide()
   $('.auth-message').hide()
   $('.restaurant-message').hide()
@@ -21,7 +22,21 @@ const onIndexRestaurant = function (event) {
     .catch(restaurantUi.indexRestaurantFailure)
 }
 
+const onShowRestaurant = function (event) {
+  event.preventDefault()
+  $('.restaurant-divs').hide()
+  $('.auth-message').hide()
+  $('.restaurant-message').hide()
+  const data = getFormFields(event.target)
+  const id = data.restaurant.id
+  console.log(id)
+  restaurantApi.showRestaurant(id)
+    .then(restaurantUi.showRestaurantSuccess)
+    .catch(restaurantUi.showRestaurantFailure)
+}
+
 module.exports = {
   onCreateNewRestaurant,
-  onIndexRestaurant
+  onIndexRestaurant,
+  onShowRestaurant
 }
