@@ -69,7 +69,6 @@ const updateRestaurantFailure = function () {
 const onUpdateRestaurant = function (event) {
   event.preventDefault()
   store.currentId = $(this).parent().parent().attr('data-id')
-  console.log(store.currentId)
   const data = getFormFields(this)
   restaurantApi.updateRestaurant(data)
     .then(updateRestaurantSuccess)
@@ -88,12 +87,15 @@ const getUpdateForm = function (event) {
 
 const indexRestaurantSuccess = function (data) {
   hideRestaurantDivs()
-  restaurantMessage('Here are all your favorite restaurants')
-  console.log(data)
-  const showRestaurantsHTML = showRestaurants({restaurants: data.restaurants})
-  $('.restaurant-content').append(showRestaurantsHTML).show()
-  $(() => $('.confirmation').on('click', confirmDelete))
-  $(() => $('.update').on('click', getUpdateForm))
+  if (data.restaurants.length === 0) {
+    restaurantMessage('No favorite restaurants, please add some!')
+  } else {
+    restaurantMessage('Here are all your favorite restaurants')
+    const showRestaurantsHTML = showRestaurants({restaurants: data.restaurants})
+    $('.restaurant-content').append(showRestaurantsHTML).show()
+    $(() => $('.confirmation').on('click', confirmDelete))
+    $(() => $('.update').on('click', getUpdateForm))
+  }
 }
 
 const indexRestaurantFailure = function (data) {
