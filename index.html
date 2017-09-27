@@ -15,7 +15,7 @@
   <nav class="navbar fixed-top">
     <ul class="nav navbar-nav">
       <li class="create-fave-link restaurant-crude"><a>Add New Fave</a></li>
-      <li class="update-fave-link restaurant-crude"><a>Edit A Fave</a></li>
+
       <li class="show-fave-link restaurant-crude"><a>Find A Fave</a></li>
       <li class="index-fave-link restaurant-crude"><a>View All Faves</a></li>
       <li class="signup-link"><a>Create Account</a></li>
@@ -69,13 +69,10 @@
 
     <div class="restaurant-divs show-fave">
       <form id="show-fave">
-        <input name="restaurant[name]" type="text" placeholder="Restaurant Name">
-        <input name="restaurant[rating]" type="text" placeholder="Rating">
-        <input name="restaurant[neighborhood]" type="text" placeholder="Neighborhood">
+        <input name="restaurant[id]" type="text" placeholder="Restaurant ID">
         <button type="submit" class="btn btn-default">Show This Restaurant</button>
       </form>
       </div>
-
 
       <div class="restaurant-divs restaurant-content"></div>
     </body>
