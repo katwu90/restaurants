@@ -53,14 +53,13 @@ const confirmDelete = function (event) {
   $('.yes-delete').on('click', onYesDelete)
 }
 
-const updateFormInputs = `<input name="restaurant[name]" type="text" placeholder="Restaurant Name">
-<input name="restaurant[rating]" type="text" placeholder="Rating">
-<input name="restaurant[neighborhood]" type="text" placeholder="Neighborhood">
+const updateFormInputs = `<input class="r-name" name="restaurant[name]" type="text" value="">
+<input class="r-rating" name="restaurant[rating]" type="text" value="">
+<input class="r-neigh" name="restaurant[neighborhood]" type="text" value="">
 <button type="submit" class="update-button btn btn-default">Update This Restaurant</button>`
 
 const updateRestaurantSuccess = function () {
   restaurantMessage('Successfully updated restaurant!')
-
 }
 
 const updateRestaurantFailure = function () {
@@ -73,15 +72,6 @@ const onUpdateRestaurant = function (event) {
   console.log(store.currentId)
   const data = getFormFields(this)
   console.log(data)
-  if (data.restaurant.name === '') {
-    data.restaurant.name = $(this).parent().siblings('.name').children().text()
-  }
-  if (data.restaurant.rating === '') {
-    data.restaurant.rating = $(this).parent().siblings('.rating').children().text()
-  }
-  if (data.restaurant.neighborhood === '') {
-    data.restaurant.neighborhood = $(this).parent().siblings('.neighborhood').children().text()
-  }
   restaurantApi.updateRestaurant(data)
     .then(updateRestaurantSuccess)
     .catch(updateRestaurantFailure)
@@ -91,6 +81,9 @@ const getUpdateForm = function (event) {
   event.preventDefault()
   $(this).siblings('.update-form').html(updateFormInputs)
   $(this).hide()
+  $('.r-name').val($(this).parent().siblings('.name').children().text())
+  $('.r-rating').val($(this).parent().siblings('.rating').children().text())
+  $('.r-neigh').val($(this).parent().siblings('.neighborhood').children().text())
   $('.update-form').on('submit', onUpdateRestaurant)
 }
 
