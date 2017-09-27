@@ -1,20 +1,21 @@
 {{#each restaurants as |restaurant|}}
   <ul data-id="{{restaurant.id}}">
-  <li>Name: {{restaurant.name}}</li>
-  <li>
+  <li class="name">Name: <span>{{restaurant.name}}</span></li>
+  <li class="rating">
     {{#if restaurant.rating}}
-      Rating: {{restaurant.rating}}
+      Rating: <span>{{restaurant.rating}}</span>
     {{else}}
-      Rating: N/A
+      Rating: <span>N/A</span>
     {{/if}}
   </li>
-  <li>
+  <li class="neighborhood">
     {{#if restaurant.neighborhood}}
-      Neighborhood: {{restaurant.neighborhood}}
+      Neighborhood: <span>{{restaurant.neighborhood}}</span>
     {{else}}
-      Neighborhood: N/A
+      Neighborhood: <span>N/A</span>
     {{/if}}
   </li>
+  <li><form class="update-form"></form><button class="update btn btn-default">Update</button></li>
   <li><p class="confirm-delete"><button class="confirmation btn btn-default">Delete</button></p></li>
   </ul>
 {{/each}}
