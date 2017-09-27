@@ -1,8 +1,8 @@
 'use strict'
 const store = require('../store')
 const restaurantApi = require('./restaurantApi')
-// const restaurantEvents = require('./restaurantEvents')
 const showRestaurants = require('./restaurant-listing.handlebars')
+const getOneRestaurant = require('./get-one-restaurant.handlebars')
 const getFormFields = require('../../../lib/get-form-fields')
 
 const hideRestaurantDivs = () => $('.restaurant-divs').hide()
@@ -71,7 +71,6 @@ const onUpdateRestaurant = function (event) {
   store.currentId = $(this).parent().parent().attr('data-id')
   console.log(store.currentId)
   const data = getFormFields(this)
-  console.log(data)
   restaurantApi.updateRestaurant(data)
     .then(updateRestaurantSuccess)
     .catch(updateRestaurantFailure)
@@ -80,16 +79,17 @@ const onUpdateRestaurant = function (event) {
 const getUpdateForm = function (event) {
   event.preventDefault()
   $(this).siblings('.update-form').html(updateFormInputs)
+  $(this).siblings().children('.r-name').val($(this).parent().siblings('.name').children().text())
+  $(this).siblings().children('.r-rating').val($(this).parent().siblings('.rating').children().text())
+  $(this).siblings().children('.r-neigh').val($(this).parent().siblings('.neighborhood').children().text())
   $(this).hide()
-  $('.r-name').val($(this).parent().siblings('.name').children().text())
-  $('.r-rating').val($(this).parent().siblings('.rating').children().text())
-  $('.r-neigh').val($(this).parent().siblings('.neighborhood').children().text())
-  $('.update-form').on('submit', onUpdateRestaurant)
+  $(this).siblings().on('submit', onUpdateRestaurant)
 }
 
 const indexRestaurantSuccess = function (data) {
   hideRestaurantDivs()
   restaurantMessage('Here are all your favorite restaurants')
+  console.log(data)
   const showRestaurantsHTML = showRestaurants({restaurants: data.restaurants})
   $('.restaurant-content').append(showRestaurantsHTML).show()
   $(() => $('.confirmation').on('click', confirmDelete))
@@ -101,9 +101,25 @@ const indexRestaurantFailure = function (data) {
   restaurantMessage('Error on getting all your favorite restaurants!')
 }
 
+const showRestaurantSuccess = function (data) {
+  hideRestaurantDivs()
+  restaurantMessage('Here is your favorite restaurant:')
+  const getOneRestaurantHTML = getOneRestaurant({restaurant: data.restaurant})
+  $('.one-restaurant').remove()
+  $('.restaurant-content').append(getOneRestaurantHTML).show()
+  $('#show-fave').trigger('reset')
+}
+
+const showRestaurantFailure = function () {
+  hideRestaurantDivs()
+  restaurantMessage('Error on getting your favorite restaurant! Please try another ID.')
+}
+
 module.exports = {
   createRestaurantSuccess,
   createRestaurantFailure,
   indexRestaurantSuccess,
-  indexRestaurantFailure
+  indexRestaurantFailure,
+  showRestaurantSuccess,
+  showRestaurantFailure
 }
