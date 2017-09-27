@@ -3,4 +3,9 @@
 const store = {
 }
 
-module.exports = store
+let currentId = null
+
+module.exports = {
+  store,
+  currentId
+}
