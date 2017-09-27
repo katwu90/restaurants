@@ -45,19 +45,20 @@ const updateRestaurant = function (data) {
   })
 }
 
-// const showRestaurant = function (id) {
-//   return $.ajax({
-//     url: config.apiOrigin + '/restaurants/' + id,
-//     method: 'GET',
-//     headers: {
-//       Authorization: 'Token token=' + store.user.token
-//     }
-//   })
-// }
+const showRestaurant = function (id) {
+  return $.ajax({
+    url: config.apiOrigin + '/restaurants/' + id,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user.token
+    }
+  })
+}
 
 module.exports = {
   createRestaurant,
   indexRestaurant,
   deleteRestaurant,
-  updateRestaurant
+  updateRestaurant,
+  showRestaurant
 }
