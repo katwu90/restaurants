@@ -1,0 +1,19 @@
+<ul data-id="{{restaurant.id}}">
+  <li class="name">Name: <span>{{restaurant.name}}</span></li>
+  <li class="rating">
+    {{#if restaurant.rating}}
+      Rating: <span>{{restaurant.rating}}</span>
+    {{else}}
+      Rating: <span>N/A</span>
+    {{/if}}
+  </li>
+  <li class="neighborhood">
+    {{#if restaurant.neighborhood}}
+      Neighborhood: <span>{{restaurant.neighborhood}}</span>
+    {{else}}
+      Neighborhood: <span>N/A</span>
+    {{/if}}
+  </li>
+  <!-- <li><form class="update-form"></form><button class="update btn btn-default">Update</button></li>
+  <li><p class="confirm-delete"><button class="confirmation btn btn-default">Delete</button></p></li> -->
+  </ul>
