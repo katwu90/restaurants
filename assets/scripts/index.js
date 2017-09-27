@@ -48,4 +48,13 @@ $(() => {
   $('#create-fave').on('submit', restaurantEvents.onCreateNewRestaurant)
   // index all restaurants
   $('.index-fave-link').on('click', restaurantEvents.onIndexRestaurant)
+  // show one restaurantEvents
+  $('.show-fave-link').on('click', () => {
+    $('.restaurant-divs').hide()
+    $('.restaurant-content').hide()
+    $('.auth-message').hide()
+    $('.restaurant-message').hide()
+    $('.show-fave').show('slow')
+  })
+  $('#show-fave').on('submit', restaurantEvents.onShowRestaurant)
 })
