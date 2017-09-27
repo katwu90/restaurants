@@ -17,7 +17,7 @@ const signUpFailure = function () {
 
 const signInSuccess = function (data) {
   store.user = data.user
-  authMessage('Successfully signed in!')
+  authMessage('Successfully signed in!').show()
   $('#sign-in').trigger('reset')
   hideAuthDivs()
   $('.signup-link').hide()
@@ -28,33 +28,37 @@ const signInSuccess = function (data) {
 }
 
 const signInFailure = function () {
-  authMessage('Error on signing in! Please enter correct email and password.')
+  authMessage('Error on signing in! Please enter correct email and password.').show()
   $('#sign-in').trigger('reset')
 }
 
 const changePasswordSuccess = function () {
-  authMessage('Successfully changed password!')
+  authMessage('Successfully changed password!').show()
   $('.change-password').hide()
   $('#change-password').trigger('reset')
 }
 
 const changePasswordFailure = function () {
-  authMessage('Error on changing password!')
+  authMessage('Error on changing password!').show()
   $('#change-password').trigger('reset')
 }
 
 const signOutSuccess = function () {
   store.user = null
-  authMessage('Successfully signed out!')
+  authMessage('Successfully signed out!').show()
   $('.auth').hide()
   $('.signout-link').hide()
   $('.managepassword-link').hide()
+  $('.restaurant-crude').hide()
   $('.signup-link').show()
   $('.signin-link').show()
+  $('.restaurant-content').hide()
+  $('.restaurant-message').hide()
+  $('.restaurant-divs').hide()
 }
 
 const signOutFailure = function () {
-  authMessage('Error on signing out!')
+  authMessage('Error on signing out!').show()
 }
 
 module.exports = {
