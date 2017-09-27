@@ -1,4 +1,5 @@
 {{#each restaurants as |restaurant|}}
+<div class="one-restaurant">
   <ul data-id="{{restaurant.id}}">
   <li class="name">Name: <span>{{restaurant.name}}</span></li>
   <li class="rating">
@@ -18,4 +19,5 @@
   <li><form class="update-form"></form><button class="update btn btn-default">Update</button></li>
   <li><p class="confirm-delete"><button class="confirmation btn btn-default">Delete</button></p></li>
   </ul>
+</div>
 {{/each}}
