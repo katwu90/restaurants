@@ -1,18 +1,25 @@
 .auth-message {
+  font-family: 'Roboto', sans-serif;
   font-size: 20px;
   text-align: center;
-}
-
-body {
-  margin: 0 auto;
 }
 
 a {
   color: #fff;
 }
 
+body {
+  background-color:rgb(242, 210, 226) ;
+}
+
 h1 {
+  font-family: 'Ribeye Marrow', cursive;
+  font-size: 70px;
   text-align: center;
+}
+
+li {
+  font-family: 'Roboto', sans-serif;
 }
 
 li a:hover {
@@ -20,11 +27,12 @@ li a:hover {
 }
 
 .navbar {
-  background-color: #b0c4b1;
+  background-color: #8bcc8e;
 }
 
 p {
   text-align: left;
+  font-family: 'Roboto', sans-serif;
 }
 
 ul {
@@ -32,5 +40,16 @@ ul {
 }
 
 .restaurant-message {
+  font-family: 'Roboto', sans-serif;
+  font-size: 20px;
   text-align: center;
+}
+
+.restaurant-content {
+  background-color: rgba(139, 204, 142, 0.59);
+  padding: 10px;
+}
+
+span {
+  font-weight: bold;
 }
